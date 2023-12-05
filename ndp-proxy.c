@@ -69,7 +69,7 @@ int main(int argc, char **argv)
 	unsigned char out_buffer[PACKET_BUFFER_SIZE];	/* Output buffer */
 	size_t nbytes;					/* Data length */
 
-	char interface[IFNAMSIZ];				/* Interface name */
+	char interface[IF_NAMESIZE+1];				/* Interface name */
 	int interface_index;				/* Interface index */
 	unsigned char interface_mac[ETH_ALEN];	/* Interface MAC address */
 
@@ -160,8 +160,8 @@ int main(int argc, char **argv)
 				      );
 				exit(0);
 			case 'i':
-				strncpy(interface, optarg, IFNAMSIZ);
-				interface[IFNAMSIZ] = 0;
+				strncpy(interface, optarg, IF_NAMESIZE);
+				interface[IF_NAMESIZE] = 0;
 				break;
 			case 'n':
 				if (inet_pton(AF_INET6, optarg, &network) != 1)
