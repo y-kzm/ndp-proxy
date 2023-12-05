@@ -386,7 +386,7 @@ int forge_icmp6_na (unsigned char *buffer, unsigned char *srcmac, unsigned char 
 	packet.na.nd_na_type = ND_NEIGHBOR_ADVERT;
 	packet.na.nd_na_code = 0;
 	packet.na.nd_na_cksum = 0;
-	packet.na.nd_na_flags_reserved = ND_NA_FLAG_SOLICITED | ND_NA_FLAG_OVERRIDE | ND_NA_FLAG_ROUTER;
+	packet.na.nd_na_flags_reserved = ND_NA_FLAG_SOLICITED | ND_NA_FLAG_ROUTER;
 	memcpy(&packet.na.nd_na_target, target, sizeof(struct in6_addr));
 
 	packet.na.nd_na_cksum = icmp6_cksum((unsigned char *)&packet.na, sizeof(struct packet) - sizeof(struct ethhdr) - sizeof(struct ip6_hdr), srcip, dstip);
